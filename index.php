@@ -30,6 +30,8 @@ require_once __DIR__ . '/Controllers/HomeController.php';
 require_once __DIR__ . '/Controllers/UserController.php';
 require_once __DIR__ . '/Controllers/RoleController.php';
 require_once __DIR__ . '/Controllers/DashboardController.php';
+require_once __DIR__ . '/Models/EventModel.php';
+require_once __DIR__ . '/Controllers/EventController.php';
 
 // ---------------------------------------------------------------------
 // 2. EN-TÊTES HTTP DE SÉCURITÉ (workshop, Partie 7.5)
@@ -125,6 +127,31 @@ switch ($action) {
         break;
     case 'roles_update':
         (new RoleController())->update();
+        break;
+    // ---------------- Événements (Module 6) ----------------
+    case 'events':
+        (new EventController())->frontIndex();
+        break;
+    case 'event_register':
+        (new EventController())->toggleRegister();
+        break;
+    case 'admin_events':
+        (new EventController())->index();
+        break;
+    case 'admin_event_create':
+        (new EventController())->create();
+        break;
+    case 'admin_event_store':
+        (new EventController())->store();
+        break;
+    case 'admin_event_edit':
+        (new EventController())->edit();
+        break;
+    case 'admin_event_update':
+        (new EventController())->update();
+        break;
+    case 'admin_event_delete':
+        (new EventController())->delete();
         break;
 
     // ---------------- Page introuvable ----------------
